@@ -21,6 +21,9 @@ app.use(cors({
 //#endregion
 
 
+// Exemplo de uso do dotenv:
+// const secretKey = process.env.API_TOKEN;
+
 app.get('/', (req, res) => {
   const obj = [
     {
