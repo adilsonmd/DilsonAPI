@@ -1,20 +1,25 @@
+// Configura uso da depencia dotenv (para acessar arquivo .env)
+require('dotenv').config();
+
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); 
 const app = express();
 const port = 3000;
 
-// Rotas
+// Rotas adicionais
 const ffxivApi = require('./routes/ffxiv');
 
-
 app.use(express.json());
-app.use(cors());
 
+//#region Configuração CORS
+app.use(cors());
 app.use(cors({
   origin: 'http://localhost:5173', // substitua pelo seu domínio front-end
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Content-Type,Authorization'
 }));
+//#endregion
+
 
 app.get('/', (req, res) => {
   const obj = [
